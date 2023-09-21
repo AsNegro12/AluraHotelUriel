@@ -61,6 +61,7 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		setResizable(false);
 		setUndecorated(true);
+		setLocationRelativeTo(null);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();

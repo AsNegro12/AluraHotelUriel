@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import mx.com.aluraHotel.Controller.UsuariosController;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -76,8 +77,8 @@ public class Login extends JFrame {
 		
 		//Imagen de fondo img-hotel-login-.png
 		JLabel lblImgFondo = new JLabel("");
+		lblImgFondo.setIcon(new ImageIcon(Login.class.getResource("/imagenes/img-hotel-login-.png")));
 		lblImgFondo.setBounds(0, 0, 304, 538);
-
 		panel_1.add(lblImgFondo);
 		//
 		//Salir de la aplicacion
@@ -237,7 +238,7 @@ public class Login extends JFrame {
 		//Logo
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(new ImageIcon(Login.class.getResource("/imagenes/lOGO-50PX.png")));
-		lblLogo.setBounds(198, 37, 69, 59);
+		lblLogo.setBounds(198, 69, 69, 59);
 		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblLogo);
 		
@@ -277,11 +278,14 @@ public class Login extends JFrame {
 		
 		if(inicioExitoso)
 		{
-			System.out.println("Inicio de sesión exitoso. ");
+			MenuUsuario menuUsuario = new MenuUsuario();
+			menuUsuario.setVisible(true);
+			dispose();	
 		}
 		else
 		{
-			System.out.println("Inicio de sesión fallido.");
+			JOptionPane.showMessageDialog(this, "Inicio de sesión fallido."
+					+ "\nUsuario o contraseña invalida.");
 		}
 		
 	}

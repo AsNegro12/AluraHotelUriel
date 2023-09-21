@@ -142,7 +142,7 @@ public class MenuPrincipal extends JFrame {
 		labelExit.setFont(new Font("Roboto", Font.PLAIN, 18));
 		labelExit.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel btnLogin = new JLabel("");
+		JPanel btnLogin = new JPanel();
 		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e)
@@ -155,13 +155,13 @@ public class MenuPrincipal extends JFrame {
 		btnLogin.setLayout(null);
 		btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		btnLogin.setBackground(SystemColor.window);
-		btnLogin.setBounds(754, 300, 83, 70);
+		btnLogin.setBounds(768, 304, 83, 77);
 		panel.add(btnLogin);
 		
 		JLabel lblLogin = new JLabel("");
-		panel.add(lblLogin);
-		lblLogin.setBounds(768, 300, 83, 70);
 		lblLogin.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/login.png")));
+		lblLogin.setBounds(0, 0, 80, 70);
+		btnLogin.add(lblLogin);
 		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblTitulo = new JLabel("LOGIN");

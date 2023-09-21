@@ -11,6 +11,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import mx.com.aluraHotel.Controller.UsuariosController;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
@@ -264,7 +267,23 @@ public class Login extends JFrame {
 	
 	private void LoginLogica()
 	{
-		System.out.println("hola");
+		//System.out.println("hola");
+		UsuariosController usuariosController = new UsuariosController();
+		
+		String usuario = txtUsuario.getText();
+		String clave = String.valueOf(txtContrasena.getPassword());
+		
+		boolean inicioExitoso = usuariosController.iniciarSesion(usuario, clave);
+		
+		if(inicioExitoso)
+		{
+			System.out.println("Inicio de sesión exitoso. ");
+		}
+		else
+		{
+			System.out.println("Inicio de sesión fallido.");
+		}
+		
 	}
 	
 	 private void headerMousePressed(java.awt.event.MouseEvent evt)

@@ -17,23 +17,27 @@ public class UsuariosDAO
 		con = connectionFactory.recuperarConexion();
 	}
 	
-	public boolean validarCredenciales(String usuario, String clave)
+	public String validarCredenciales(String usuario)
 	{
 		try
 		{
-			String query = "SELECT * FROM usuarios WHERE usuario=? AND clave=?";
-			
+			String query = "SELECT clave FROM usuarios WHERE usuario=?";
 			PreparedStatement preparedStatement = con.prepareStatement(query);
 			preparedStatement.setString(1, usuario);
-			preparedStatement.setString(2, clave);
 			
 			ResultSet resultSet = preparedStatement.executeQuery();
-			return resultSet.next();
+			
+			
+			if(resultSet.next())
+			{
+				return resultSet.getString("clave");
+			}
+			return null; // El usuario no existe
 		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();
-			return false;
+			return null;
 		}
 	}
 }

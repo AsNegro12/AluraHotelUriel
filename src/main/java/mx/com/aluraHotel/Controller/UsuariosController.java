@@ -2,6 +2,8 @@ package mx.com.aluraHotel.Controller;
 
 import mx.com.aluraHotel.dao.UsuariosDAO;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 public class UsuariosController
 {
 	private UsuariosDAO dao;
@@ -13,6 +15,15 @@ public class UsuariosController
 	
 	public boolean iniciarSesion(String usuario, String clave)
 	{
-		return dao.validarCredenciales(usuario, clave);
+		String claveAlmcenada =  dao.validarCredenciales(usuario);
+		
+		if(claveAlmcenada != null)
+		{
+			return BCrypt.verifyer().verify(clave.toCharArray(), claveAlmcenada).verified;
+		}
+		else
+		{
+			 return false;
+		}
 	}
 }

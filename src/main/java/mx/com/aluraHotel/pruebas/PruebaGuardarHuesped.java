@@ -12,11 +12,9 @@ public class PruebaGuardarHuesped
 		Date fecha = Date.valueOf("2001-12-12");
 		
 		HuespedesController controller = new HuespedesController();
-		Huespedes huespedes = new Huespedes("Uriel", "Flores", fecha, "mexicana", "123456", 1L);
-		
+		Huespedes huespedes = new Huespedes("Uriel", "Flores", fecha, "mexicana", "123456", 2L);
 		
 		controller.guardar(huespedes);
 		
-
 	}
 }

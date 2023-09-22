@@ -32,5 +32,4 @@ public class ConnectionFactory
 			throw new RuntimeException(e);
 		}
 	}
-
 }

@@ -15,8 +15,7 @@ public class ValidarSiFechaNoNMenorFechaA {
         }
 		catch (Exception e)
 		{
-			e.printStackTrace();
-            return false; // La fecha ingresada no es válida
+			throw new RuntimeException("No se pudo hacer la verificación");
         }
 	}
 	
@@ -30,8 +29,8 @@ public class ValidarSiFechaNoNMenorFechaA {
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
-            return false; // La fecha ingresada no es válida
+			throw new RuntimeException("No se pudo hacer la verificación"); 
+			// La fecha ingresada no es válida
 		}
 	}
 }

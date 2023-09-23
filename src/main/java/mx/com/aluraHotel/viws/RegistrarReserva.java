@@ -226,6 +226,7 @@ public class RegistrarReserva extends JFrame {
 		header.setBackground(Color.WHITE);
 		panel.add(header);
 		
+		//boton atras
 		JPanel btnAtras = new JPanel();
 		btnAtras.addMouseListener(new MouseAdapter() {
 			@Override
@@ -307,9 +308,41 @@ public class RegistrarReserva extends JFrame {
 		txtFormaPago.setBackground(SystemColor.text);
 		txtFormaPago.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
 		txtFormaPago.setFont(new Font("Roboto", Font.PLAIN, 16));
-		txtFormaPago.setModel(new DefaultComboBoxModel<String>(new String[] {"Tarjeta de Crédito", "Tarjeta de Débito",
-				"Dinero en efectivo", "Trasferencia"}));
+		txtFormaPago.setModel(new DefaultComboBoxModel<String>(new String[] {"Tarjeta de Crédito",
+				"Tarjeta de Débito",
+				"Dinero en efectivo",
+				"Trasferencia"}));
 		panel.add(txtFormaPago);
+		
+		//Botón Siguiente		
+		JPanel btnsiguiente = new JPanel();
+		btnsiguiente.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if((txtFechaE.getDate() != null && txtFechaS.getDate() != null))
+				{
+					guardarReserva();
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
+				}
+			}
+			public void mouseEntered(MouseEvent e)
+			{
+				btnsiguiente.setBackground(new Color(12, 138, 255));
+			}
+			@Override
+			public void mouseExited(MouseEvent e)
+			{
+				btnsiguiente.setBackground(new Color(12, 138, 199));
+			}
+		});
+		btnsiguiente.setLayout(null);
+		btnsiguiente.setBackground(new Color(12, 138, 199));
+		btnsiguiente.setBounds(238, 493, 122, 35);
+		panel.add(btnsiguiente);
+		btnsiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		
 		//Botón Siguiente	
 		JLabel lblSiguiente = new JLabel("SIGUIENTE");
@@ -317,24 +350,6 @@ public class RegistrarReserva extends JFrame {
 		lblSiguiente.setForeground(Color.WHITE);
 		lblSiguiente.setFont(new Font("Roboto", Font.PLAIN, 18));
 		lblSiguiente.setBounds(0, 0, 112, 35);
-		
-		//Botón Siguiente		
-		JPanel btnsiguiente = new JPanel();
-		btnsiguiente.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if((txtFechaE.getDate() != null && txtFechaS.getDate() != null)) {
-					guardarReserva();
-				}else {
-					JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
-				}
-			}
-		});
-		btnsiguiente.setLayout(null);
-		btnsiguiente.setBackground(SystemColor.textHighlight);
-		btnsiguiente.setBounds(238, 493, 122, 35);
-		panel.add(btnsiguiente);
-		btnsiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		btnsiguiente.add(lblSiguiente);	
 	}
 	
@@ -379,7 +394,9 @@ public class RegistrarReserva extends JFrame {
 			
 			reservasController.guardar(nuevaReserva);
 							
-			JOptionPane.showMessageDialog(null, "Ventana huespedes registro");
+			RegistroHuespedes huespedes =  new RegistroHuespedes(nuevaReserva.getId());
+			huespedes.setVisible(true);
+			dispose();
 		}
 		
 	}

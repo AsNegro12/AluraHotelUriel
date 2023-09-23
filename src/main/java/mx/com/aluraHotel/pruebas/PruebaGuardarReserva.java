@@ -15,7 +15,7 @@ public class PruebaGuardarReserva
 		String[] metodosDePago = {"Efectivo", "Tarjeta de crédito", "Tarjeta de débito", "Transferencia"};
 		
 		ReservasController controller = new ReservasController();
-		Reserva reserva = new Reserva(fecha1, fecha2, 123.00, metodosDePago[1]);
+		Reserva reserva = new Reserva(fecha1, fecha2, "123", metodosDePago[1]);
 		
 		controller.guardar(reserva);
 	}

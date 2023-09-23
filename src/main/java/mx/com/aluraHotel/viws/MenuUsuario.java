@@ -90,7 +90,9 @@ public class MenuUsuario extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				JOptionPane.showMessageDialog(null,"Ventana registro.");
+				RegistrarReserva registrarReserva = new RegistrarReserva();
+				registrarReserva.setVisible(true);
+				dispose();
 			}
 			@Override
 			public void mouseEntered(MouseEvent e)
@@ -125,7 +127,7 @@ public class MenuUsuario extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				JOptionPane.showMessageDialog(null,"Ventana buscar.");
+				JOptionPane.showMessageDialog(null,"hola");
 			}
 			@Override
 			public void mouseEntered(MouseEvent e)

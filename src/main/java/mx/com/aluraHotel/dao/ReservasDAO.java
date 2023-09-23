@@ -30,7 +30,7 @@ public class ReservasDAO
 			{
 				statement.setDate(1,reserva.getFecha_entrada());
 				statement.setDate(2,reserva.getFecha_salida());
-				statement.setDouble(3,reserva.getValor());
+				statement.setString(3,reserva.getValor());
 				statement.setString(4,reserva.getFormato_pago());
 				
 				statement.execute();

@@ -7,10 +7,10 @@ public class Reserva
 	private Long id;
 	private Date fecha_entrada;
 	private Date fecha_salida;
-	private Double valor;
+	private String valor;
 	private String formato_pago;
 	
-	public Reserva(Date fecha_entrada, Date fecha_salida, Double valor, String formato_pago) {
+	public Reserva(Date fecha_entrada, Date fecha_salida, String valor, String formato_pago) {
 		super();
 		this.fecha_entrada = fecha_entrada;
 		this.fecha_salida = fecha_salida;
@@ -18,7 +18,7 @@ public class Reserva
 		this.formato_pago = formato_pago;
 	}
 
-	public Reserva(Long id, Date fecha_entrada, Date fecha_salida, Double valor, String formato_pago) {
+	public Reserva(Long id, Date fecha_entrada, Date fecha_salida, String valor, String formato_pago) {
 		super();
 		this.id = id;
 		this.fecha_entrada = fecha_entrada;
@@ -51,11 +51,11 @@ public class Reserva
 		this.fecha_salida = fecha_salida;
 	}
 
-	public Double getValor() {
+	public String getValor() {
 		return valor;
 	}
 
-	public void setValor(Double valor) {
+	public void setValor(String valor) {
 		this.valor = valor;
 	}
 

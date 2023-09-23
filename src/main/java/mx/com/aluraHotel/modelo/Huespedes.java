@@ -91,4 +91,11 @@ public class Huespedes
 		this.idReserva = idReserva;
 	}
 
+	@Override
+	public String toString() {
+		return "Huespedes [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiendo="
+				+ fechaNacimiendo + ", nacionalidad=" + nacionalidad + ", telefono=" + telefono + ", idReserva="
+				+ idReserva + "]";
+	}
+
 }

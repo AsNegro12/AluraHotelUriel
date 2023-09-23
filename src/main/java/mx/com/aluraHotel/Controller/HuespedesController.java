@@ -1,5 +1,7 @@
 package mx.com.aluraHotel.Controller;
 
+import java.util.List;
+
 import mx.com.aluraHotel.dao.HuespedesDAO;
 import mx.com.aluraHotel.modelo.Huespedes;
 
@@ -14,6 +16,11 @@ public class HuespedesController
 	
 	public void guardar(Huespedes huespedes)
 	{
-		dao.GuardarHuesped(huespedes);
+		this.dao.GuardarHuesped(huespedes);
+	}
+	
+	public List<Huespedes> ListarHuespedes()
+	{
+		return this.dao.listaHuespedes();
 	}
 }

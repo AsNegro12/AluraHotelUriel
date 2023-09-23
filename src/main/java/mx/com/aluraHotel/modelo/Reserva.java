@@ -66,5 +66,11 @@ public class Reserva
 	public void setFormato_pago(String formato_pago) {
 		this.formato_pago = formato_pago;
 	}
+
+	@Override
+	public String toString() {
+		return "Reserva [id=" + id + ", fecha_entrada=" + fecha_entrada + ", fecha_salida=" + fecha_salida + ", valor="
+				+ valor + ", formato_pago=" + formato_pago + "]";
+	}
 	
 }

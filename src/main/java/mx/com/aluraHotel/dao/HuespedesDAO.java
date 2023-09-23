@@ -3,7 +3,10 @@ package mx.com.aluraHotel.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import mx.com.aluraHotel.factory.ConnectionFactory;
 import mx.com.aluraHotel.modelo.Huespedes;
@@ -52,6 +55,58 @@ public class HuespedesDAO
 		catch(Exception e)
 		{
 			throw new RuntimeException(e);
+		}
+	}
+	
+	public List<Huespedes> listaHuespedes()
+	{
+		List<Huespedes> huespedes = new ArrayList<Huespedes>();
+		
+		try
+		{
+			String query = "SELECT "
+					+ "id, "
+					+ "nombre, "
+					+ "apellido, "
+					+ "fecha_nacimiento, "
+					+ "nacionalidad, "
+					+ "telefono, "
+					+ "idReserva "
+					+ "FROM huespedes";
+			
+			try(PreparedStatement statement = con.prepareStatement(query))
+			{
+				statement.execute();
+				
+				transformarResultSetEnHuesped(huespedes, statement);
+			}
+			return huespedes;
+		}
+		catch (SQLException e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+	
+	private void 
+	transformarResultSetEnHuesped(List<Huespedes> reservas, PreparedStatement statement) throws SQLException
+	{
+		try(ResultSet rst = statement.getResultSet())
+		{
+			while(rst.next())
+			{
+				Huespedes huespedes = new Huespedes(
+						rst.getLong(1), 
+						rst.getString(2), 
+						rst.getString(3), 
+						rst.getDate(4), 
+						rst.getString(5), 
+						rst.getString(6), 
+						rst.getLong(7));
+				
+				reservas.add(huespedes);
+			}
+			
 		}
 	}
 }

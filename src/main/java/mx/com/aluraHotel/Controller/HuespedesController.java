@@ -23,4 +23,14 @@ public class HuespedesController
 	{
 		return this.dao.listaHuespedes();
 	}
+	
+	public List<Huespedes> listarHuespedesPorID(String id)
+	{
+		return this.dao.burcarPorId(id);
+	}
+	
+	public boolean existeID(String id)
+	{
+		return this.dao.ExisteID(id);
+	}
 }

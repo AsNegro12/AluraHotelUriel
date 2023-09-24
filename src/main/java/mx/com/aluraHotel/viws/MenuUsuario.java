@@ -127,7 +127,9 @@ public class MenuUsuario extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				JOptionPane.showMessageDialog(null,"hola");
+				VentanaBusqueda busqueda = new VentanaBusqueda();
+				busqueda.setVisible(true);
+				dispose();
 			}
 			@Override
 			public void mouseEntered(MouseEvent e)

@@ -271,7 +271,6 @@ public class RegistroHuespedes extends JFrame {
 		btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		
 		JLabel lblGuardar = new JLabel("GUARDAR");
-		lblGuardar.setBounds(10, 11, 72, 14);
 		lblGuardar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGuardar.setForeground(Color.WHITE);
 		lblGuardar.setFont(new Font("Roboto", Font.PLAIN, 18));

@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import mx.com.aluraHotel.factory.ConnectionFactory;
 import mx.com.aluraHotel.modelo.Huespedes;
 
@@ -86,6 +88,63 @@ public class HuespedesDAO
 		{
 			throw new RuntimeException(e);
 		}
+	}
+	
+	public List<Huespedes> burcarPorId(String id)
+	{
+		List<Huespedes> huespedes = new ArrayList<Huespedes>();
+		
+		try
+		{
+			String query = "SELECT "
+					+ "id, "
+					+ "nombre, "
+					+ "apellido, "
+					+ "fecha_nacimiento, "
+					+ "nacionalidad, "
+					+ "telefono, "
+					+ "idReserva "
+					+ "FROM huespedes "
+					+ "WHERE id=?";
+			
+			try(PreparedStatement statement = con.prepareStatement(query))
+			{
+				statement.setString(1,id);
+				statement.execute();
+				
+				transformarResultSetEnHuesped(huespedes, statement);
+			}
+			return huespedes;
+		}
+		catch (SQLException e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public boolean ExisteID(String id)
+	{
+		try
+		{
+			String query = "SELECT * FROM huespedes WHERE id=?";
+			
+			try(PreparedStatement statement = con.prepareStatement(query))
+			{
+				statement.setString(1,id);
+				statement.execute();
+				
+				ResultSet resultSet = statement.executeQuery();
+				if(resultSet.next())
+				{
+					return true;
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException(e);
+		}
+		return false;
 	}
 	
 	private void 

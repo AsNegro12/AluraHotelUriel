@@ -1,14 +1,13 @@
 package mx.com.aluraHotel.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JOptionPane;
 
 import mx.com.aluraHotel.factory.ConnectionFactory;
 import mx.com.aluraHotel.modelo.Huespedes;
@@ -122,6 +121,27 @@ public class HuespedesDAO
 		}
 	}
 	
+	public void editarHuesped(String nombre, String apellido, Date fechaN, String nacionalidad, String telefono, Long idReserva, Long id)
+	{
+		try(PreparedStatement statement = 
+				con.prepareStatement("UPDATE huespedes SET nombre=?, apellido=?, fecha_nacimiento=?, nacionalidad=?, telefono=?, idReserva=? WHERE id=?"))
+		{
+			statement.setString(1, nombre);
+			statement.setString(2, apellido);
+			statement.setDate(3, fechaN);
+			statement.setString(4, nacionalidad);
+			statement.setString(5, telefono);
+			statement.setLong(6,idReserva);
+			statement.setLong(7, id);
+			
+			statement.execute();
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException();
+		}
+	}
+	
 	public boolean ExisteID(String id)
 	{
 		try
@@ -146,6 +166,7 @@ public class HuespedesDAO
 		}
 		return false;
 	}
+	
 	
 	private void 
 	transformarResultSetEnHuesped(List<Huespedes> reservas, PreparedStatement statement) throws SQLException

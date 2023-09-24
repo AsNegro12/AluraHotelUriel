@@ -1,6 +1,7 @@
 package mx.com.aluraHotel.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -107,6 +108,27 @@ public class ReservasDAO
 		catch (SQLException e)
 		{
 			throw new RuntimeException(e);
+		}
+	}
+	
+	public void editarReserva( Date fechaEntrada,  Date fechaSalida, String valor, String FormatoPago, Long id)
+	{
+		try(PreparedStatement statement = 
+				con.prepareStatement("UPDATE reserva SET fecha_entrada=?, fecha_salida=?, valor=?, formato_pago=? WHERE id=?"))
+		{
+			statement.setDate(1, fechaEntrada);
+			statement.setDate(2, fechaSalida);
+			statement.setString(3, valor);
+			statement.setString(4, FormatoPago);
+			statement.setLong(5, id);
+			
+			statement.execute();
+			
+			System.out.println("funciona DAO"+fechaEntrada+fechaSalida+valor+FormatoPago+id);
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException();
 		}
 	}
 	

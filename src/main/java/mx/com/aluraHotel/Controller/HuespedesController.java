@@ -1,5 +1,6 @@
 package mx.com.aluraHotel.Controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import mx.com.aluraHotel.dao.HuespedesDAO;
@@ -32,5 +33,10 @@ public class HuespedesController
 	public boolean existeID(String id)
 	{
 		return this.dao.ExisteID(id);
+	}
+	
+	public void editarHuespedes(String nombre, String apellido, Date fechaN, String nacionalidad, String telefono, Long idReserva, Long id)
+	{
+		this.dao.editarHuesped(nombre, apellido, fechaN, nacionalidad, telefono, idReserva, id);
 	}
 }

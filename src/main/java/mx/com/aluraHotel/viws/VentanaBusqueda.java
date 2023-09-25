@@ -46,6 +46,8 @@ public class VentanaBusqueda extends JFrame {
 	private ReservasController reservaController;
 	private JTable tbHuespedes;
 	private int xMouse,yMouse;
+	private String reserva;
+	private String huespedes;
 
 	/**
 	 * Launch the application.
@@ -315,6 +317,40 @@ public class VentanaBusqueda extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) 
 			{
+				int filaHuespedes = tbHuespedes.getSelectedRow();
+				int filaReservas = tbReservas.getSelectedRow();
+				
+				if(filaReservas >= 0)
+				{
+					reserva = tbReservas.getValueAt(filaReservas, 0).toString();
+					int confirmar = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar los datos?"); 
+
+					if(confirmar == JOptionPane.YES_OPTION){
+
+						String valor = tbReservas.getValueAt(filaReservas, 0).toString();			
+						reservaController.eliminarId(valor);
+						JOptionPane.showMessageDialog(contentPane, "Registro Eliminado");
+						limpiarTabla();
+						LlenarTablaReservas();
+						LlenarTablaHuespedes();
+					}
+				}
+				else if(filaReservas >= 0)
+				{
+					huespedes = tbHuespedes.getValueAt(filaHuespedes, 0).toString();
+					int confirmarh = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar los datos?"); 
+
+					if(confirmarh == JOptionPane.YES_OPTION)
+					{
+
+						String valor = tbHuespedes.getValueAt(filaHuespedes, 0).toString();			
+						huespedesController.eliminarId(valor);
+						JOptionPane.showMessageDialog(contentPane, "Registro Eliminado");
+						limpiarTabla();
+						LlenarTablaHuespedes();
+						LlenarTablaReservas();
+					}
+				}
 			}
 			@Override
 			public void mouseEntered(MouseEvent e)
@@ -442,7 +478,7 @@ public class VentanaBusqueda extends JFrame {
 		}
 	}
 	//
-	//
+	//Esta parte del codigo, se encarga de capturar y editar los campos.
 	//
 	private void ActualizarReservas()
 	{		

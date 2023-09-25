@@ -132,6 +132,19 @@ public class ReservasDAO
 		}
 	}
 	
+	public void eliminarPorId(String id)
+	{
+		try(PreparedStatement statement = con.prepareStatement("DELETE FROM reserva WHERE id = ?"))
+		{
+			statement.setNString(1,id);
+			statement.execute();
+		}
+		catch(SQLException e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public boolean ExisteID(String id)
 	{
 		try

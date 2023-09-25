@@ -39,4 +39,9 @@ public class HuespedesController
 	{
 		this.dao.editarHuesped(nombre, apellido, fechaN, nacionalidad, telefono, idReserva, id);
 	}
+	
+	public void eliminarId(String id)
+	{
+		this.dao.eliminarPorId(id);
+	}
 }

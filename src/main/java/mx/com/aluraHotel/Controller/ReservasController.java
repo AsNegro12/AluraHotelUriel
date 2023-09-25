@@ -36,6 +36,11 @@ public class ReservasController
 		return this.reservadao.ExisteID(id);
 	}
 	
+	public void eliminarId(String id)
+	{
+		this.reservadao.eliminarPorId(id);
+	}
+	
 	public void editarReservas( Date fechaEntrada,  Date fechaSalida, String valor, String FormatoPago, Long id)
 	{
 		this.reservadao.editarReserva(fechaEntrada, fechaSalida, valor, FormatoPago, id);

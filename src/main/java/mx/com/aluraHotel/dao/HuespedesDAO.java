@@ -53,7 +53,7 @@ public class HuespedesDAO
 			}
 			
 		}
-		catch(Exception e)
+		catch(SQLException e)
 		{
 			throw new RuntimeException(e);
 		}
@@ -136,7 +136,7 @@ public class HuespedesDAO
 			
 			statement.execute();
 		}
-		catch(Exception e)
+		catch(SQLException e)
 		{
 			throw new RuntimeException();
 		}
@@ -160,13 +160,25 @@ public class HuespedesDAO
 				}
 			}
 		}
-		catch (Exception e)
+		catch (SQLException e)
 		{
 			throw new RuntimeException(e);
 		}
 		return false;
 	}
 	
+	public void eliminarPorId(String id)
+	{
+		try(PreparedStatement statement = con.prepareStatement("DELETE FROM huespedes WHERE id = ?"))
+		{
+			statement.setNString(1,id);
+			statement.execute();
+		}
+		catch(SQLException e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
 	
 	private void 
 	transformarResultSetEnHuesped(List<Huespedes> reservas, PreparedStatement statement) throws SQLException

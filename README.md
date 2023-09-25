@@ -39,4 +39,4 @@ El sistema de registro y reservación de Alura se ha diseñado para ser intuitiv
 Con esta herramienta, el personal del hotel puede ofrecer un servicio más eficiente y personalizado, mejorando la experiencia general de los clientes en el hotel Alura."
 
 ## Agradecimientos
-Gracias al equipo de Alura a la comunidad por apoyarme en los momento donde no podia superar un problema. 
+Quiero expresar mi sincero agradecimiento al equipo de Alura y a nuestra comunidad por estar siempre ahí cuando más los he necesitado. Sus consejos y apoyo han sido fundamentales para superar obstáculos y avanzar en mi aprendizaje y proyectos. ¡Gracias por ser una fuente constante de inspiración y apoyo
